@@ -1,23 +1,37 @@
-\documentclass[a4paper, twoside, ngerman]{article}
+\documentclass[a4paper, ngerman ]{article}
+% actually not used: twoside
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
 \usepackage{hyperref}
 
+% short-commands
+\newcommand{\ssot}{\glqq Single Source of Truth\grqq{}}
 
-\title{Exposé der Bachelorarbeit}
+% magic numbers
+\newcommand{\vspaceA}{\vspace{10pt}}
+
+\title{Exposé der Bachelorarbeit (Entwurf)}
 \author{Lukas Hüller}
-\date{Februar 2021}
-
-\def
+% \date{Februar 2021} => rather use autogenerate
 
 \begin{document}
 
 \maketitle
 
-Die Arbeit setzt sich mit der Fragestellung auseinander, welche Frontend-Interfaces zum Erstellen von Prozess-Automatisierungs-Robotern (RPAs) benötigt werden. Darüber hinaus wird in der Arbeit auf die technische Implementierung einer Datenstruktur eingegangen, die das nahtlose Wechseln zwischen zwei dieser Frontend-Interfaces ermöglicht.
+\textit{Die Arbeit setzt sich mit der Fragestellung auseinander, welche Frontend-Interfaces zum Erstellen von Prozess-Automatisierungs-Robotern (RPAs) be"-nötigt werden. Darüber hinaus wird in der Arbeit auf die technische Implementierung einer Datenstruktur eingegangen, die das nahtlose Wechseln zwischen zwei dieser Frontend-Interfaces ermöglicht.}
 
-Die Bachelorarbeit wird im Rahmen des Bachelorprojektes geschrieben. Ziel des Projektes ist die Entwicklung einer Open-Source RPA-Plattform  \footnote{\url{https://github.com/bptlab/ark_automate}}, die es zuvor definierten Personas ermöglicht, eigene, robotergestützte Automatisierungen zu erstellen. Basierend auf Interviews mit möglichen Endnutzern der Software, ergaben sich verschiedene Personas, die über unsere Plattform Roboter erstellen sollen. Da das fachliche Vorwissen der Nutzer jedoch unterschiedlich ist, sollen ihnen verschiedene Oberflächen zur Erstellung der Roboter zur Verfügung gestellt werden. Um weiterhin eine kollaborative Zusammenarbeit zwischen den Personas zu ermöglichen, bedarf es in der Software einer einheitlichen Repräsentation der Robotermodelle. Mit dieser \glqq Single Source of Truth\grqq{} soll die Datenintegrität zwischen den verschiedenen Robotermodellen bewahrt werden. \newline
+\vspaceA
 
+Ziel des Bachelorprojektes ist die Entwicklung einer Open-Source RPA-Plattform  \footnote{\url{https://github.com/bptlab/ark_automate}}, die es zuvor definierten Zielgruppen (Personas) ermöglicht, eigene, robotergestützte Automatisierungen zu erstellen. Basierend auf Interviews mit möglichen Endnutzern der Software, ergaben sich verschiedene Personas, die über die entstehende Plattform Roboter erstellen sollen. Da sich das fachliche Vorwissen der Nutzer im Bezug auf die Erstellung solcher Roboter jedoch unterscheidet, sollen ihnen verschiedene Oberflächen zur Erstellung der Roboter zur Verfügung gestellt werden. Um weiterhin eine kollaborative Zusammenarbeit zwischen den Personas zu ermöglichen, bedarf es in der Software einer einheitlichen Repräsentation der Robotermodelle. Mit dieser \ssot soll die Datenintegrität zwischen den verschiedenen Robotermodellen bewahrt werden. 
 
+\vspaceA
+
+Die Arbeit gibt anfangs einen Überblick über die in Interviews ermittelten Personas. Die erste Forschungsfrage beschäftigt sich mit der Auswahl der benötigten Modellierungs-Oberflächen hinsichtlich der definierten Zielgruppen. Hierzu wird eine kleine Studie zum Bekanntheitsgrad von Modellierungssprachen durchgeführt. Nachdem die benötigten Interfaces definiert und vorgestellt wurden, klären wir in der zweiten Forschungsfrage, welche Anforderungen an die einheitliche Speicherlösung gestellt werden. Der technische Fokus der Arbeit liegt auf der Implementierung dieser Speicherlösung. Hierbei wird zudem das Übersetzen der visuellen Roboter-Repräsentation in die Speicherlösung vorgestellt, welches die Datenintegrität gewährleistet. 
+
+Die Möglichkeit der Erstellung von Automa"-tisierungs-Robotern in verschiedenen Editoren ist eine der Schlüsselfunktionen der Bachelorprojekt-Software. Daher soll hierbei auch ein spezieller Fokus auf der technischen Umsetzung dieser Speicherlösung liegen. Zudem ist die Anpassung eines Programms in verschienenen Oberflächen ein bekanntes Problem. Das weltweit bekannte CMS Wordpress bietet zahlreiche Oberflächen zur Erstellung einer Webseite - oftmals interagieren diese jedoch nur mangelhaft miteinander. 
+
+\pagebreak
+
+Je nach Umfang und Voranschreiten der Arbeit wird neben der Speicher"-lösung das Übersetzen (\textit{engl. parsing}) in die Modellierungsoberflächen dokumentiert. Hierzu sollte definitiv das Parsing zum BPMN-Interface, sowie das Parsing zum finalen Programmcode gezeigt werden. Optional ließe sich auch noch ein weiteres Interface integrieren, sofern das der Umfang der Arbeit erlaubt.
 
 \end{document}
