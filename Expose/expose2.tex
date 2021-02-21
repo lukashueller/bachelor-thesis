@@ -1,0 +1,51 @@
+\documentclass[a4paper, ngerman ]{article}
+% actually not used: twoside
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{hyperref}
+\usepackage{sectsty}
+\usepackage[T1]{fontenc}
+
+% short-commands
+\newcommand{\ssot}{\glqq Single Source of Truth\grqq{}}
+
+% magic numbers
+\newcommand{\vspaceA}{\vspace{10pt}}
+
+\sectionfont{\fontsize{11}{15}\selectfont}
+
+
+\title{Exposé der Bachelorarbeit (2. Entwurf)}
+\author{Lukas Hüller}
+% \date{Februar 2021} => rather use autogenerate
+
+\begin{document}
+
+\maketitle
+
+\section{Einführung und Motivation}
+
+Sich oft wiederholende Interaktionsprozesse von Nutzern mit Programmoberflächen werden seit 2000 mittels so genannter \glqq Softwareroboter\grqq{} (\textit{kurz: RPAs}) automatisiert.\textsuperscript{[Quelle fehlend]} Die zugrunde liegende Wissenschaft der \glqq Robotic Process Automation\grqq{} beschäftigt sich damit, die repetetiven und u. U. fehleranfälligen Prozesse zu automatisieren, indem die Nutzerinteraktionen von Softwareprogrammen imitiert werden.
+
+Die Erstellung solcher Softwareroboter ist bislang nur mit den pro­p­ri­e­tären Oberflächen der bestehden Softwarelösungen möglich. Viele RPA-Entwickler skizzieren die zu erstellenden Roboter in Gesprächen mit Prozessexperten jedoch in weit verbreiteten Modellierungssprachen wie BPMN\footnote{\url{https://de.wikipedia.org/wiki/Business_Process_Model_and_Notation}} oder Flussdiagrammen\footnote{\url{https://de.wikipedia.org/wiki/Programmablaufplan}}. Daher ist es das Ziel des Bachelorprojektes, eine RPA-Software zu programmieren, die u.a. das Erstellen eines Softwareroboters in verschiedenen Modellierungssprachen ermöglicht. 
+
+\section{Zielsetzung}
+
+Basierend auf Interviews mit möglichen Endnutzern der Software, ergaben sich neben den klassischen RPA-Entwicklern weitere Zielgruppen (Personas), die über die resultierende Plattform Roboter erstellen sollen. Da sich das fachliche Vorwissen der Nutzer im Bezug auf die Erstellung solcher Roboter jedoch unterscheidet, sollen ihnen verschiedene Oberflächen zur Erstellung der Roboter zur Verfügung gestellt werden. Um weiterhin eine kollaborative Zusammenarbeit zwischen den Personas zu ermöglichen, bedarf es in der Software eine einheitliche Repräsentation der Robotermodelle. Diese Speicherlösung (\ssot) muss die Datenintegrität zwischen den verschiedenen Robotermodellen bewahren. 
+
+Fraglich ist, ob sich eine solche Speicherlösung für die Modellierung von Softwarerobotern definieren und ebenso in der Schnittstelle der verschiedenen Modellierungs-Oberflächen implementieren lässt.
+
+\pagebreak
+
+\section{Konzept und Lösungsansatz}
+
+Die Möglichkeit der Erstellung von Automa"-tisierungs-Robotern in verschiedenen Editoren ist eine der Schlüsselfunktionen der Bachelorprojekt-Software. Daher soll hierbei auch ein spezieller Fokus auf der technischen Umsetzung dieser Speicherlösung liegen. Zudem ist die Anpassung eines Programms in verschienenen Oberflächen ein bekanntes Problem. Das CMS Wordpress bietet zahlreiche Oberflächen zur Erstellung einer Webseite - oftmals interagieren diese jedoch nur mangelhaft miteinander. 
+
+Die Arbeit gibt anfangs einen Überblick über die in Interviews ermittelten Personas. Die erste Forschungsfrage beschäftigt sich mit der Auswahl der benötigten Modellierungs-Oberflächen hinsichtlich der definierten Zielgruppen. Hierzu wird eine kleine Studie zum Bekanntheitsgrad von Modellierungssprachen durchgeführt. Nachdem die benötigten Interfaces definiert und vorgestellt wurden, klären wir in der zweiten Forschungsfrage, welche Anforderungen an die einheitliche Speicherlösung gestellt werden. Der technische Fokus der Arbeit liegt dann auf der Implementierung dieser Speicherlösung. Hierbei wird zudem das Übersetzen der visuellen Roboter-Repräsentation in die Speicherlösung vorgestellt, welches ebenso die Datenintegrität gewährleistet. 
+
+Je nach Umfang und Voranschreiten der Arbeit wird neben der Speicher"-lösung das Übersetzen (\textit{engl. parsing}) in die Modellierungsoberflächen dokumentiert. Hierzu sollte definitiv das Parsing zum BPMN-Interface, sowie das Parsing zum finalen Programmcode gezeigt werden. Optional ließe sich auch noch ein weiteres Interface integrieren, sofern das der Umfang der Arbeit erlaubt.
+
+\section{miscellaneous | deprecated}
+Ziel des Bachelorprojektes ist die Entwicklung einer Open-Source RPA-Platt"-form  \footnote{\url{https://github.com/bptlab/ark_automate}}, die es zuvor definierten Zielgruppen (Personas) ermöglicht, eigene, robotergestützte Automatisierungen zu erstellen.
+
+\end{document}
