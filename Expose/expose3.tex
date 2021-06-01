@@ -1,0 +1,52 @@
+\documentclass[a4paper, ngerman ]{article}
+% actually not used: twoside
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{hyperref}
+\usepackage{sectsty}
+\usepackage[T1]{fontenc}
+
+% short-commands
+\newcommand{\ssot}{\glqq Single Source of Truth\grqq}
+
+% magic numbers
+\newcommand{\vspaceA}{\vspace{10pt}}
+
+\sectionfont{\fontsize{11}{15}\selectfont}
+
+
+\title{Implementierung einer universellen Datenspeicherlösung zur Interaktion von verschiedenen Modellierungsoberflächen}
+\author{Lukas Hüller}
+% \date{Februar 2021} => rather use autogenerate
+
+\begin{document}
+
+\maketitle
+
+\section{Einführung und Motivation}
+
+Repetitive und möglicherweise fehleranfällige Prozesse finden sich oft in der Interaktion von Nutzern mit Softwareprogrammen. Um diese Interaktionen zu automatisieren, beschäftigen sich seit ca. 20 Jahren Wissenschaftler auf der ganzen Welt mit der \glqq Robotic Process Automation\grqq{} (\textit{kurz: RPA}). Ziel dieser Wissenschaft ist es, die Nutzerinteraktionen verschiedener Softwareprogramme mit Hilfe so genannter \glqq Softwareroboter\grqq{} zu imitieren.
+
+Die Erstellung solcher Softwareroboter ist grundsätzlich bereits mit einer Vielzahl an bestehenden Softwarelösungen realisierbar. Das Modellieren der Roboter ist jedoch ausschließlich in den pro­p­ri­e­tären Oberflächen, die sich stark von gängigen Modellierungssprachen unterscheiden, möglich. Viele RPA-Entwickler skizzieren die zu erstellenden Roboter in Gesprächen mit Prozessexperten jedoch in den Fachkreisen weit verbreiteten Modellierungssprachen wie zum Beispiel BPMN\footnote{\url{https://de.wikipedia.org/wiki/Business_Process_Model_and_Notation}} oder Flussdiagrammen\footnote{\url{https://de.wikipedia.org/wiki/Programmablaufplan}}. Daher ist es die Herausforderung des Bachelorprojektes, eine RPA-Software zu programmieren, die unter anderem das Erstellen eines Softwareroboters in verschiedenen Modellierungssprachen ermöglicht. 
+
+\section{Zielsetzung}
+
+Mit der entwickelten Plattform soll die Erstellung von Robotern nicht nur für RPA-Entwickler, sondern auch für andere Zielgruppen möglich sein. Basierend auf Interviews mit potenziellen Endnutzern, ergaben sich zusätzliche Personas, deren Fachwissen sich in Bezug auf Modellierungssprachen jedoch stark unterscheidet. 
+Daraus ergibt sich die Notwendigkeit einer Software, in der durch verschiedene Modellierungsoberflächen Automatisierungsroboter erstellt werden können. 
+
+Um weiterhin eine kollaborative Zusammenarbeit zwischen den Personas zu ermöglichen, bedarf es in der Software einer einheitlichen Repräsentation der Robotermodelle. Diese Speicherlösung (\ssot) muss die Datenintegrität zwischen den verschiedenen visuellen Repräsentation der Roboter bewahren. 
+
+Fraglich ist, ob sich eine solche Speicherlösung für die Modellierung von Softwarerobotern definieren und ebenso in die Schnittstelle der verschiedenen Modellierungsoberflächen implementieren lässt.
+
+\section{Konzept und Lösungsansatz}
+ 
+Eine der Schlüsselfunktionen der Bachelorarbeits-Software ist die Erstellung von Automa"-tisierungs"-robotern in verschiedenen Editoren. Deshalb soll in der Arbeit ein spezieller Fokus auf der technischen Umsetzung der Speicherlösung liegen. Zudem ist die Anpassung eines Programms in verschienenen Oberflächen ein bekanntes Problem: Das Content-Management-System
+Wordpress bietet beispielsweise zahlreiche Oberflächen zur Erstellung einer Webseite. Da von Wordpress mittels verschiedener Interfaces die Bearbeitung an derselben Webseite ermöglicht wird, bedarf es hier ebenso einer einheitlichen Repräsentation des Webdokumentes. Beim häufigen Verwenden von Wordpress fällt jedoch auf, dass diese Modellierungsoberflächen oftmals nur mangelhaft miteinander interagieren. Die Datenintegrität ist hierbei nicht immer gegeben. Derartige Probleme gilt es in meiner Bachelorarbeits-Software mit Hilfe einer geeigneten Datenspeicherung aufzulösen.
+
+Die Bachelorarbeit soll anfangs einen Überblick über die themenbezogenen Anforderungen an die Software der in Interviews ermittelten Personas geben. In der ersten Forschungsfrage soll geklärt werden, welche Modellierungsoberflächen die Zielgruppen der verschiedenen Fachkreise nutzen. Hierzu wird eine kleine Umfrage zum Bekanntheitsgrad von Modellierungssprachen durchgeführt. Im Anschluss soll betrachtet werden, welche der Modellierungsoberflächen sich bezüglich ihrer Semantik im Zusammenspiel mit RPA zur Verwendung eignen.
+
+Nachdem die benötigten Interfaces definiert und vorgestellt wurden, kläre ich in der zweiten Forschungsfrage, welche Anforderungen an die einheitliche Speicherlösung gestellt werden. Der technische Fokus der Arbeit liegt dann auf deren Implementierung. Hierbei wird zudem das Übersetzen (\textit{engl. parsing}) der visuellen Roboter-Repräsentation in die \ssot ~vorgestellt, welches das benannte Problem der Datenintegrität lösen soll. Im Ergebnis soll der Leser zur Implementierung einer weiteren Modellierungsoberfläche befähigt werden, da er durch die Bachelorarbeit in die grundlegenden Konzepte und Elemente eingeführt wurde.
+
+Je nach Umfang und Voranschreiten der Arbeit wird neben der Speicher"-lösung das Übersetzen in die Modellierungsoberflächen dokumentiert. Hierbei wird das Parsing zum BPMN-Interface sowie das Parsing zum finalen Programmcode gezeigt. Optional lässt sich  eine weitere Modellierungssprache integrieren, sofern das der Umfang der Arbeit erlaubt.
+
+\end{document}
