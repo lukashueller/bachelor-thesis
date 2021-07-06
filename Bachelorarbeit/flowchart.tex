@@ -1,0 +1,83 @@
+% =================================================
+% Set up a few colours
+\colorlet{lcnorm}{black}
+% -------------------------------------------------
+% Set up a new layer for the debugging marks, and make sure it is on
+% top
+\pgfdeclarelayer{marx}
+\pgfsetlayers{main,marx}
+% A macro for marking coordinates (specific to the coordinate naming
+% scheme used here). Swap the following 2 definitions to deactivate
+% marks.
+\providecommand{\cmark}[2][]{%
+  \begin{pgfonlayer}{marx}
+    \node [nmark] at (c#2#1) {#2};
+  \end{pgfonlayer}{marx}
+  } 
+\providecommand{\cmark}[2][]{\relax} 
+% -------------------------------------------------
+% Start the picture
+\begin{tikzpicture}[%
+    >=triangle 60,              % Nice arrows; your taste may be different
+    start chain=going below,    % General flow is top-to-bottom
+    node distance=5mm and 60mm, % Global setup of box spacing
+    every join/.style={norm},   % Default linetype for connecting boxes
+    ]
+% ------------------------------------------------- 
+% A few box styles 
+% <on chain> *and* <on grid> reduce the need for manual relative
+% positioning of nodes
+\tikzset{
+  base/.style={draw, on chain, on grid, align=center, minimum height=4ex},
+  proc/.style={base, rectangle, text width=8em},
+  test/.style={base, diamond, aspect=2, text width=5em},
+  term/.style={proc, rounded corners},
+  circ/.style={base, circle},
+  % coord node style is used for placing corners of connecting lines
+  coord/.style={coordinate, on chain, on grid, node distance=6mm and 25mm},
+  % nmark node style is used for coordinate debugging marks
+  nmark/.style={draw, cyan, circle, font={\sffamily\bfseries}},
+  % -------------------------------------------------
+  % Connector line styles for different parts of the diagram
+  norm/.style={->, draw, lcnorm},
+  free/.style={->, draw, lcfree},
+  cong/.style={->, draw, lccong},
+  it/.style={font={\small\itshape}}
+}
+% -------------------------------------------------
+% Start by placing the nodes
+% Use join to connect a node to the previous one 
+\node [term]       (te1){Robot Started};
+\node [proc, join] (p1) {Open Excel};
+\node [proc, join]      {Open Outlook};
+\node [proc, join]      {Get Data from Excel};
+\node [circ, join] (c1) {};
+\node [proc, join] (p2) {Log \$\{row\}};
+\node [proc, join] (p3) {Get Lastname};
+\node [proc, join] (p4) {Get Firstname};
+\node [proc, join] (p5) {Get Mail};
+\node [proc, join] (p6) {Get Counter};
+\node [test, below right = 5em and 19em of te1] (t1) {};
+\node [proc, below left  = 3em and 8em of t1] (p7) {Send Reminder1};
+\node [proc, below right = 3em and 8em of t1] (p8) {Send Reminder2};
+\node [circ, below= 5.5em of t1] (c2) {};
+\node [test, join] (t2) {};
+\node [proc, join] (p9) {Close Outlook};
+\node [proc, join] (p10){Close Excel};
+\node [term, join]      {Robot \\ Terminated};
+
+% -------------------------------------------------
+\path (t1.west) to node [near start, xshift=-3.5em, yshift=1.2em] {IF \$\{counter\} == 1} (p7); 
+  \draw [->,lcnorm] (t1.west) -| (p7.north);
+\path (t1.east) to node [near start, xshift=3.5em, yshift=1.2em] {IF \$\{counter\} == 2} (p8); 
+  \draw [->,lcnorm] (t1.east) -| (p8.north);
+\path (p7.south) to node [near start, xshift=2em, yshift=1em] {} (p7); 
+  \draw [->,lcnorm] (p7.south) |- (c2);
+\path (p8.south) to node [near start, xshift=2em, yshift=1em] {} (p8); 
+  \draw [->,lcnorm] (p8.south) |- (c2);
+
+\draw [->] (p6.south) -- ++(0mm,-4mm)  -- ++(23mm,0) -- ++(0mm,113mm)
+  -| (t1.north);
+\draw [->] (t2.east) -- ++(35mm,0mm)  -- ++(0,55mm) -- ++(-101mm,0mm)
+   |- (c1.east);
+\end{tikzpicture}

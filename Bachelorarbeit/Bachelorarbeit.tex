@@ -1,0 +1,163 @@
+\documentclass[
+		a4paper,     % Format A4       
+        twoside,     % zweiseitig %TODO undo
+        BCOR10mm,    % binding correction
+        cleardoubleempty, % empties cleardoublepage    
+        parskip,     % Abstand zwischen Abs‰tzen, statt Einr¸ckung
+        headsepline,  % separate heading and text by a line
+        titlepage,   % mit Titelseite
+        bibtotoc,    % include bibliography in TOC
+%				liststotoc,
+%       draft,       % renders faster, shows overfull boxes, doesn't render images
+]{scrartcl}
+
+% packages
+\usepackage[ngerman, english]{babel} % choose your language with \selectlanguage{}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % ansinew avoids escaping german umlauts
+
+\usepackage{verbatim}
+\usepackage{graphicx} % graphics can be included using \includegraphics{}
+\usepackage{iflang}
+\usepackage{textcomp}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{xcolor}
+\usetikzlibrary{shapes,arrows, positioning, backgrounds, chains}
+
+%\captionsetup[figure]{justification=raggedright, singlelinecheck=false} 
+
+
+% !BIB program = bibtex
+
+% additional settings
+\hypersetup{
+ 	pdfauthor={},
+ 	pdftitle={},
+ 	pdfsubject={Bachelor Thesis}, 
+ 	pdfkeywords={}
+ 	colorlinks=true,        % false: boxed links; true: colored links
+ 	linkcolor=black,        % color of internal links
+	citecolor=black,        % color of links to bibliography
+	filecolor=black,        % color of file links
+	urlcolor=black          % color of external links
+}
+
+% stretch text vertically by factor (zeilenabstand)
+\renewcommand{\baselinestretch}{1.150}\normalsize
+\newcommand{\footurldated}[2]{\footnote{\url{#1} (Abgerufen: #2)}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+% avoid single lines at beginning/end of page
+\clubpenalty10000
+\widowpenalty10000
+
+% custom hyphenation
+\hyphenation{
+% Ma-na-ge-ment  Netz-werk-ele-men-ten
+% Netz-werk Netz-werk-re-ser-vie-rung
+	BPMN---Community
+}
+
+\addtokomafont{sectioning}{\rmfamily}
+
+% set path to image directory
+\graphicspath{{images/}}
+
+\lstset{
+   basicstyle=\small,
+   tabsize=4,
+   showspaces=false, 
+   showstringspaces=false, 
+}
+
+\tolerance=6000
+\setlength{\emergencystretch}{3.0em}
+\parskip8pt
+
+\renewcommand{\descriptionlabel}[1]{
+\normalfont\bfseries #1:}
+
+
+% Replace with your information
+\newcommand{\Author}{Lukas Hüller}
+\newcommand{\TitleGerman}{Konzeption einer Datenspeicherlösung zur Erstellung von RPA-Robotern in verschiedenen Modellierungsoberflächen}
+\newcommand{\TitleEnglish}{Design of a data storage solution for the creation of RPA robots in different modeling interfaces}
+
+\addto\extrasenglish{
+	\renewcommand{\sectionautorefname}{Chapter}
+	\renewcommand{\subsectionautorefname}{Section}
+	\renewcommand{\subsubsectionautorefname}{Section}
+	\renewcommand{\figureautorefname}{Fig.}
+	\def\lstlistingautorefname{Listing}
+}
+
+
+\begin{document}
+% 	\selectlanguage{english}
+	\selectlanguage{ngerman}
+
+	\IfLanguageName{ngerman}{
+		\def\sectionautorefname{Kapitel}
+		\def\subsectionautorefname{Abschnitt}
+		\def\subsubsectionautorefname{Abschnitt}
+		\def\figureautorefname{Abb.}
+		\def\lstlistingautorefname{Listing}
+		\renewcommand{\refname}{Quellenverzeichnis}}{
+	}
+
+	% special pages	
+	\include{titlepage}
+	\cleardoublepage
+	\include{erklaerung}
+	% \cleardoublepage
+	% \include{statement}
+	\include{abstract}
+	\cleardoublepage
+	
+	% listings
+	\pagenumbering{Roman}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\cleardoublepage
+	
+	% include your chapters
+	\pagenumbering{arabic}
+	\input{1_einfuehrung} 
+	\clearpage
+	
+	\input{2_grundlagen}
+	\clearpage
+	
+	\input{3_anforderungsanalyse}
+	\clearpage
+	
+	\input{4_analyse_sprachen}
+	\clearpage
+	
+	\input{5_konzeption_ssot}
+	\clearpage
+	
+	\input{6_implementierung_ssot}
+	\clearpage
+	
+	\input{conclusion}
+
+	% bibliography
+	\cleardoublepage
+	%\bibliographystyle{plain}
+	%\bibliographystyle{abbrvdin}
+	\bibliographystyle{alphadin}
+	\bibliography{bibliography/references}
+	\cleardoublepage
+	
+	\input{Bachelorarbeit/anhang}
+\end{document}
